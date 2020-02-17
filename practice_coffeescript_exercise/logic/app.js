@@ -37,14 +37,24 @@
         var num_groups, num_students, x;
         num_groups = this.data.students.groups;
         num_students = this.data.students.students.length;
-        return this.data.group_partitions = ((function() {
+        this.data.group_partitions = ((function() {
           var k, ref, ref1, results;
           results = [];
-          for (x = k = 0, ref = num_students - 1, ref1 = Math.floor(num_students / num_groups); ref1 !== 0 && (ref1 > 0 ? k <= ref : k >= ref); x = k += ref1) {
+          for (x = k = 0, ref = num_students, ref1 = Math.floor(num_students / num_groups); ref1 !== 0 && (ref1 > 0 ? k <= ref : k >= ref); x = k += ref1) {
             results.push(x);
           }
           return results;
         })()).slice(0, -1).concat([num_students]);
+        console.log("Math.floor(num_students/num_groups): " + Math.floor(num_students / num_groups));
+        console.log("x for x in [0..num_students-1]: " + ((function() {
+          var k, ref, results;
+          results = [];
+          for (x = k = 0, ref = num_students; (0 <= ref ? k <= ref : k >= ref); x = 0 <= ref ? ++k : --k) {
+            results.push(x);
+          }
+          return results;
+        })()));
+        return console.log("@data.group_partitions " + this.data.group_partitions);
       },
       findPermutationsOfStudents: function() {
         var arr, perm;

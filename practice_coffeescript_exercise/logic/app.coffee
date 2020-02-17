@@ -31,7 +31,10 @@ $ ->
 		defineGroupBoundaries: -> 
 			num_groups = @data.students.groups
 			num_students = @data.students.students.length 
-			@data.group_partitions = (x for x in [0..num_students-1] by Math.floor(num_students/num_groups))[0...-1].concat [num_students]
+			@data.group_partitions = (x for x in [0..num_students] by Math.floor(num_students/num_groups))[0...-1].concat [num_students]
+			console.log "Math.floor(num_students/num_groups): " + Math.floor(num_students/num_groups)
+			console.log "x for x in [0..num_students-1]: " + (x for x in [0..num_students])
+			console.log "@data.group_partitions " + @data.group_partitions
 
 		findPermutationsOfStudents: ->  
 			perm = (xs) ->
